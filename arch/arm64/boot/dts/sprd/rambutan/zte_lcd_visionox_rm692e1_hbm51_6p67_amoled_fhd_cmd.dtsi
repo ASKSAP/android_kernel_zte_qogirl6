@@ -1,0 +1,94 @@
+/ { lcds {
+	lcd_visionox_rm692e1_mipi_fhd: lcd_visionox_rm692e1_mipi_fhd {
+		zte,lcd-init-code-version = "20210322";
+		zte,lcd-backlight-register-bit-length = <0x0b>;
+		zte,lcd-cabc-default-value = <0x01>;
+		zte,lcd-cabc-off-command = [23 00 00 02 55 00];
+		zte,lcd-cabc-low-command = [23 00 00 02 55 01];
+		zte,lcd-cabc-medium-command = [23 00 00 02 55 02];
+		zte,lcd-cabc-high-command = [23 00 00 02 55 03];
+		zte,lcm_backlight_curve_mode = "lcd_brightness_max_450_lux";
+		zte,lcd-disable-ssc;
+		zte,panel-name = "lcd_visionox_rm692e1_6p67_mipi_fhd_raydium";
+		zte,lcd-delay-open-bl-value = <30>;
+
+		sprd,dsi-work-mode = <0>; /* cmd mode*/
+		sprd,dsi-lane-number = <4>;
+		sprd,dsi-color-format = "rgb888";
+
+		sprd,phy-bit-clock = <1180000>;	/* kbps */
+		sprd,phy-escape-clock = <20000>;/* kHz */
+
+		sprd,width-mm = <69498>;
+		sprd,height-mm = <154440>;
+
+		sprd,esd-check-enable = <0>;/* 0:close , 1:open */
+		sprd,esd-check-mode = <0>;/* 0:REG ,1:TE  */
+		sprd,esd-check-period = <1000>;
+		sprd,esd-check-register = <0x0A>;
+		sprd,esd-check-value = <0x9C>;
+
+		sprd,reset-on-sequence = <1 10>, <0 20>, <1 180>;
+		sprd,reset-off-sequence = <0 5>;
+		sprd,initial-command = [
+			39 00 00 02 FE 40
+			39 00 00 02 B2 45
+			39 00 00 02 FE 26
+			39 00 00 02 A4 1A
+			39 00 00 02 A5 1A
+			39 00 00 02 FE 14
+			39 00 00 02 A2 01
+			39 00 00 02 51 80
+			39 00 00 02 7B 00
+			39 00 00 02 FE 12
+			39 00 00 02 83 20
+			39 00 00 02 FE 00
+			39 00 00 02 FA 07
+			39 00 00 02 C2 08
+			39 00 00 02 35 00
+			39 00 00 03 51 00 00
+			05 78 00 01 11
+			05 14 00 01 29
+			];
+		sprd,sleep-in-command = [
+			15 32 00 01 28
+			15 20 00 01 10
+			];
+		sprd,sleep-out-command = [
+			15 78 00 01 11
+			15 14 00 01 29
+			];
+		sprd,doze-in-command = [
+			39 28 00 02 FE 00
+			39 28 00 02 39 00
+			];
+		sprd,doze-out-command = [
+			39 28 00 02 FE 00
+			39 28 00 02 38 00
+			];
+
+		display-timings {
+			timing0 {
+				clock-frequency = <192000000>;
+				hactive = <1080>;
+				vactive = <2400>;
+				hback-porch = <0>;
+				hfront-porch = <0>;
+				vback-porch = <0>;
+				vfront-porch = <0>;
+				hsync-len = <0>;
+				vsync-len = <0>;
+			};
+		};
+
+		oled-backlight {
+			default-brightness-level = <816>;
+			sprd,max-level = <2047>;
+			brightness-levels = [
+				39 00 00 03 51 00 00
+				39 00 00 02 53 2C
+			];
+		};
+	};
+};};
+
